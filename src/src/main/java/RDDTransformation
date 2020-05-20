@@ -1,8 +1,0 @@
-scala> val data = Array(
-     | "Hello There",
-     | "Welcome to Spark",
-     | "Have a great day")
-data: Array[String] = Array(Hello There, Welcome to Spark, Have a great day)
-
-scala> val dataRDD = sc.parallelize(data)
-dataRDD: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[5] at parallelize at <console>:26

@@ -1,0 +1,44 @@
+scala> val data = Array(
+     | "Hello There",
+     | "Welcome to Spark",
+     | "Have a great day")
+data: Array[String] = Array(Hello There, Welcome to Spark, Have a great day)
+
+scala> val dataRDD = sc.parallelize(data)
+dataRDD: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[5] at parallelize at <console>:26
+
+scala> val filterRDD = dataRDD.filter(line => line.length > 15)
+filterRDD: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[7] at filter at <console>:25
+
+scala> filterRDD.collect()
+res10: Array[String] = Array(Welcome to Spark, Have a great day)
+
+scala> filterRDD.collect.foreach(println)
+       Welcome to Spark
+       Have a great day
+
+scala> val mapRDD = dataRDD.map(line => line.split(" "))
+mapRDD: org.apache.spark.rdd.RDD[Array[String]] = MapPartitionsRDD[9] at map at <console>:25
+
+scala> mapRDD.collect()
+res13: Array[Array[String]] = Array(Array(Hello, There), Array(Welcome, to, Spark), Array(Have, a, great, day))
+
+scala> val flatMapRDD = dataRDD.flatMap(line => line.split(" "))
+flatMapRDD: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[10] at flatMap at <console>:25
+
+scala> flatMapRDD.collect()
+res14: Array[String] = Array(Hello, There, Welcome, to, Spark, Have, a, great, day)
+
+scala> val numArray = Array(1,2,3,3,4,5,5,1,6,7)
+numArray: Array[Int] = Array(1, 2, 3, 3, 4, 5, 5, 1, 6, 7)
+
+scala> val numRDD = sc.parallelize(numArray)
+numRDD: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[11] at parallelize at <console>:26
+
+scala> val distinctElementsRDD = numRDD.distinct()
+distinctElementsRDD: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[14] at distinct at <console>:25
+
+scala> distinctElementsRDD.collect()
+res15: Array[Int] = Array(4, 1, 5, 6, 2, 3, 7)
+
+scala> 
