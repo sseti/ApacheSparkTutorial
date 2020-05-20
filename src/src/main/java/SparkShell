@@ -1,0 +1,23 @@
+//basic requirement for any spark jobs to run
+Spark context available as 'sc' (master = local[*], app id = local-1590000355408).
+Spark session available as 'spark'.
+
+scala> spark
+spark   spark_partition_id
+
+scala> spark
+res0: org.apache.spark.sql.SparkSession = org.apache.spark.sql.SparkSession@5bf9c995
+
+scala> spark.
+baseRelationToDataFrame   emptyDataset           read           stop
+catalog                   experimental           readStream     streams
+close                     implicits              sessionState   table
+conf                      initializeForcefully   sharedState    time
+createDataFrame           listenerManager        sparkContext   udf
+createDataset             newSession             sql            version
+emptyDataFrame            range                  sqlContext
+
+scala> spark.emptyDataFrame
+res1: org.apache.spark.sql.DataFrame = []
+
+scala>
